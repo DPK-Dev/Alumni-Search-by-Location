@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "92280815-a7c2-434b-a448-743e58f59317",
+		"name": "Alumni Search by Location",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14544697"
+	},
+	"item": [
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"id\": 4,\r\n    \"name\": \"deepak\",\r\n    \"email\": \"ryan.sally@google.net\",\r\n    \"latitude\": 17.928543251492,  \r\n    \"longitude\": 79.102567725571,\r\n    \"network_ids\": [1,2]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/alumni/api/v1/updateUser.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"alumni",
+						"api",
+						"v1",
+						"updateUser.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Nearby Alumni",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\" : 4,\r\n    \"radius\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/alumni/api/v1/search.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"alumni",
+						"api",
+						"v1",
+						"search.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
