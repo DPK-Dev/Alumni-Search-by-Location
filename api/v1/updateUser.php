@@ -19,6 +19,23 @@ try {
     // If there are any mising fields, return an error message
     validateInput($data, $requiredFields);
 
+    // Validate email format
+    if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+        throw new Exception('Invalid email format.');
+    }
+
+    // Validate latitude and longitude
+    if (!is_numeric($data['latitude']) || $data['latitude'] < -90 || $data['latitude'] > 90) {
+        throw new Exception('Invalid latitude value.');
+    }
+    if (!is_numeric($data['longitude']) || $data['longitude'] < -180 || $data['longitude'] > 180) {
+        throw new Exception('Invalid longitude value.');
+    }
+
+    // Sanitize inputs
+    $data['name'] = htmlspecialchars(trim($data['name']), ENT_QUOTES, 'UTF-8');
+    $data['email'] = filter_var(trim($data['email']), FILTER_SANITIZE_EMAIL);
+
 
     // Check if user exists
     $db->where('id', $data['id']);
